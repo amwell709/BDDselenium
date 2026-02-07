@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Axian\\C#Project\\ReqnrollTestProject\\ReqnrollTestProject\\ReqnrollTestProject.csproj": {}
+    "C:\\Axian\\DevOps\\BDDselenium\\ReqnrollTestProject\\ReqnrollTestProject.csproj": {}
   },
   "projects": {
-    "C:\\Axian\\C#Project\\ReqnrollTestProject\\ReqnrollTestProject\\ReqnrollTestProject.csproj": {
+    "C:\\Axian\\DevOps\\BDDselenium\\ReqnrollTestProject\\ReqnrollTestProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Axian\\C#Project\\ReqnrollTestProject\\ReqnrollTestProject\\ReqnrollTestProject.csproj",
+        "projectUniqueName": "C:\\Axian\\DevOps\\BDDselenium\\ReqnrollTestProject\\ReqnrollTestProject.csproj",
         "projectName": "ReqnrollTestProject",
-        "projectPath": "C:\\Axian\\C#Project\\ReqnrollTestProject\\ReqnrollTestProject\\ReqnrollTestProject.csproj",
+        "projectPath": "C:\\Axian\\DevOps\\BDDselenium\\ReqnrollTestProject\\ReqnrollTestProject.csproj",
         "packagesPath": "C:\\Users\\LiLei\\.nuget\\packages\\",
-        "outputPath": "C:\\Axian\\C#Project\\ReqnrollTestProject\\ReqnrollTestProject\\obj\\",
+        "outputPath": "C:\\Axian\\DevOps\\BDDselenium\\ReqnrollTestProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

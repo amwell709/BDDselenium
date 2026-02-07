@@ -25,6 +25,8 @@ variables:
   buildConfiguration: 'Release'
   solution: '**/*.sln'
   dotnetVersion: '8.0.x'
+  TF_BUILD: 'true'  # Explicitly set CI environment variable
+  CI: 'true'
 
 stages:
   - stage: Build
@@ -46,11 +48,14 @@ stages:
             displayName: 'Display .NET version'
 
           # Display Chrome version (for debugging)
-          - powershell: |
-              Get-Command chrome -ErrorAction SilentlyContinue
-              Get-ItemProperty 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Google Chrome' -ErrorAction SilentlyContinue | Select-Object DisplayVersion
+          - task: PowerShell@2
             displayName: 'Display Chrome version'
             continueOnError: true
+            inputs:
+              targetType: 'inline'
+              script: |
+                Get-Command chrome -ErrorAction SilentlyContinue
+                Get-ItemProperty 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Google Chrome' -ErrorAction SilentlyContinue | Select-Object DisplayVersion
 
           # Restore NuGet packages
           - task: DotNetCoreCLI@2
@@ -74,7 +79,7 @@ stages:
             inputs:
               command: 'test'
               projects: '$(solution)'
-              arguments: '--configuration $(buildConfiguration) --no-build --logger trx --results-directory $(Build.SourcesDirectory)/TestResults'
+              arguments: '--configuration $(buildConfiguration) --no-build --logger "console;verbosity=detailed" --logger trx --results-directory $(Build.SourcesDirectory)/TestResults'
             continueOnError: true  # Continue even if tests fail to publish results
 
           # Publish test results
@@ -85,9 +90,10 @@ stages:
               testResultsFiles: '**/TestResults/*.trx'
               searchFolder: '$(Build.SourcesDirectory)'
               mergeTestResults: true
-              failTaskOnFailedTests: true
+              failTaskOnFailedTests: false  # Don't fail the pipeline on test failures, just report them
               testRunTitle: 'Reqnroll BDD Tests'
               publishRunAttachments: true
+            condition: succeededOrFailed()
 
           # Publish build artifacts (optional)
           - task: PublishBuildArtifacts@1

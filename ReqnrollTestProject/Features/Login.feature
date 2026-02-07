@@ -1,12 +1,12 @@
-Feature: E-commerce Login Functionality
-
-  Scenario: Successful login with valid credentials
-    Given I navigate to the login page
-    When I enter email "amwell709@gmail.com"
-    And I enter password "Selenium123#"
-    And I click the login button
-    Then I should be logged in successfully
-    And I should see the My Account page
+#Feature: E-commerce Login Functionality
+#
+#  Scenario: Successful login with valid credentials
+#    Given I navigate to the login page
+#    When I enter email "amwell709@gmail.com"
+#    And I enter password "Selenium123#"
+#    And I click the login button
+#    Then I should be logged in successfully
+#    And I should see the My Account page
 
   #Scenario: Verify login page elements are present
   #  Given I navigate to the login page

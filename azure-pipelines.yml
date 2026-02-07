@@ -45,6 +45,13 @@ stages:
           - script: dotnet --version
             displayName: 'Display .NET version'
 
+          # Display Chrome version (for debugging)
+          - powershell: |
+              Get-Command chrome -ErrorAction SilentlyContinue
+              Get-ItemProperty 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Google Chrome' -ErrorAction SilentlyContinue | Select-Object DisplayVersion
+            displayName: 'Display Chrome version'
+            continueOnError: true
+
           # Restore NuGet packages
           - task: DotNetCoreCLI@2
             displayName: 'Restore NuGet packages'
